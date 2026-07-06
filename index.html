@@ -46,8 +46,7 @@
   html { -webkit-text-size-adjust: 100%; }
 
   body {
-    background: var(--paper) url("assets/paper.jpg") repeat top center;
-    background-size: 1100px auto;
+    background: var(--paper);
     color: var(--ink);
     font-family: "Spezia Wide", "Helvetica Neue", Arial, sans-serif;
     font-weight: 500;
@@ -94,13 +93,6 @@
   }
 
   /* ---- Left: content ---- */
-  .capital {
-    display: block;
-    width: 64px;
-    height: auto;
-    margin-bottom: 20px;
-  }
-
   h1 {
     font-family: "Spezia Serif", Georgia, serif;
     font-weight: 500;
@@ -201,20 +193,12 @@
   }
   .plate img.etching {
     display: block;
-    width: 100%;
-    max-width: 460px;
-    max-height: 78vh;
-    object-fit: contain;
+    width: min(100%, 460px, calc(80vh * 832 / 1100));
+    height: auto;
     margin: 0 auto;
+    /* crop off the white plate mat baked into the PNG */
+    clip-path: polygon(22.08% 3.09%, 77.92% 3.09%, 95.91% 16.22%, 95.91% 83.78%, 77.92% 96.91%, 22.08% 96.91%, 4.09% 83.78%, 4.09% 16.22%);
   }
-  .plate .caption {
-    display: inline-flex;
-    align-items: center;
-    gap: 12px;
-    margin-top: 22px;
-  }
-  .plate .caption img { width: 22px; height: auto; opacity: 0.9; }
-
   /* ---- Footer ---- */
   footer {
     display: flex;
@@ -256,7 +240,6 @@
 <main>
   <div class="content">
     <header>
-      <img class="capital" src="assets/illuminated-j.png" alt="Illuminated capital J">
       <span class="overline">New York City</span>
       <h1>Jeremy Giffon</h1>
       <div class="bio">
@@ -303,7 +286,6 @@
 
   <aside class="plate" aria-hidden="true">
     <img class="etching" src="assets/etching-garden.png" alt="">
-    <span class="caption"><img src="assets/hallmark.svg" alt=""></span>
   </aside>
 </main>
 
