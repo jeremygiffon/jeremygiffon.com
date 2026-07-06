@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Jeremy Giffon</title>
+<meta name="description" content="Jeremy Giffon is the founder of Octave. We buy and build venture-backed technology companies into great long-term businesses.">
+<link rel="canonical" href="https://jeremygiffon.com/">
+<link rel="icon" type="image/png" href="assets/favicon.png">
+<meta property="og:title" content="Jeremy Giffon">
+<meta property="og:description" content="Founder of Octave. We buy and build venture-backed technology companies into great long-term businesses.">
+<meta property="og:url" content="https://jeremygiffon.com/">
+<meta property="og:type" content="website">
+<style>
+  @font-face {
+    font-family: "Spezia Serif";
+    src: url("fonts/SpeziaSerif-Medium.otf") format("opentype");
+    font-weight: 500;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: "Spezia Wide";
+    src: url("fonts/SpeziaWide-Medium.otf") format("opentype");
+    font-weight: 500;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: "ABCO Benedict";
+    src: url("fonts/ABCOBenedict-Regular.ttf") format("truetype");
+    font-weight: 400;
+    font-display: swap;
+  }
+
+  :root {
+    --paper: #F4F3EF;
+    --white: #F9F9F9;
+    --ink: #121212;
+    --purple: #3B0558;
+    --terracotta: #914937;
+    --rule: rgba(18, 18, 18, 0.14);
+    --muted: rgba(18, 18, 18, 0.56);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { -webkit-text-size-adjust: 100%; }
+
+  body {
+    background: var(--paper) url("assets/paper.jpg") repeat top center;
+    background-size: 1100px auto;
+    color: var(--ink);
+    font-family: "Spezia Wide", "Helvetica Neue", Arial, sans-serif;
+    font-weight: 500;
+    letter-spacing: 0.014em;
+    line-height: 1.45;
+    font-size: 16px;
+  }
+
+  main {
+    max-width: 620px;
+    margin: 0 auto;
+    padding: 88px 24px 64px;
+  }
+
+  a {
+    color: var(--purple);
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 3px;
+    text-decoration-color: rgba(59, 5, 88, 0.35);
+    transition: color 120ms ease, text-decoration-color 120ms ease;
+  }
+  a:hover {
+    color: var(--terracotta);
+    text-decoration-color: rgba(145, 73, 55, 0.5);
+  }
+
+  .overline {
+    font-family: "ABCO Benedict", "Helvetica Neue", Arial, sans-serif;
+    font-size: 0.72rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  /* ---- Hero ---- */
+  header img.capital {
+    display: block;
+    width: 112px;
+    height: auto;
+    margin-bottom: 36px;
+  }
+
+  h1 {
+    font-family: "Spezia Serif", Georgia, serif;
+    font-weight: 500;
+    font-size: clamp(2.6rem, 8vw, 3.6rem);
+    line-height: 1.05;
+    letter-spacing: -0.01em;
+    margin: 14px 0 32px;
+  }
+
+  .bio p {
+    font-size: 1.04rem;
+    line-height: 1.5;
+    margin-bottom: 1.1em;
+  }
+  .bio p:last-child { margin-bottom: 0; }
+
+  /* ---- Sections ---- */
+  section { margin-top: 72px; }
+
+  section .overline {
+    display: block;
+    padding-bottom: 14px;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  /* ---- Podcasts ---- */
+  .episodes { list-style: none; }
+
+  .episodes a {
+    display: block;
+    padding: 22px 0;
+    border-bottom: 1px solid var(--rule);
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .episodes .show {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 16px;
+    font-family: "Spezia Serif", Georgia, serif;
+    font-size: 1.3rem;
+    line-height: 1.2;
+    color: var(--purple);
+    transition: color 120ms ease;
+  }
+  .episodes a:hover .show { color: var(--terracotta); }
+
+  .episodes .year {
+    font-family: "ABCO Benedict", "Helvetica Neue", Arial, sans-serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.18em;
+    color: var(--muted);
+    white-space: nowrap;
+  }
+
+  .episodes .title {
+    margin-top: 6px;
+    font-size: 0.92rem;
+    color: var(--muted);
+    line-height: 1.45;
+  }
+
+  /* ---- Newsletter ---- */
+  .newsletter p {
+    margin: 20px 0 24px;
+    font-size: 1.04rem;
+  }
+
+  .embed {
+    border: 1px solid var(--rule);
+    background: var(--white);
+    padding: 8px;
+  }
+  .embed iframe {
+    display: block;
+    width: 100%;
+    height: 320px;
+    border: 0;
+    background: var(--white);
+  }
+
+  /* ---- Footer ---- */
+  footer {
+    margin-top: 88px;
+    padding-top: 40px;
+    border-top: 1px solid var(--rule);
+    text-align: center;
+  }
+  footer img.hallmark {
+    width: 34px;
+    height: auto;
+    margin-bottom: 20px;
+  }
+  footer .fine {
+    font-family: "ABCO Benedict", "Helvetica Neue", Arial, sans-serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  footer .fine a { color: inherit; text-decoration-color: var(--rule); }
+  footer .fine a:hover { color: var(--terracotta); }
+</style>
+</head>
+<body>
+<main>
+  <header>
+    <img class="capital" src="assets/illuminated-j.png" alt="Illuminated capital J">
+    <span class="overline">New York City</span>
+    <h1>Jeremy Giffon</h1>
+    <div class="bio">
+      <p>I&rsquo;m the founder of <a href="https://octavecap.com">Octave</a>. We buy and build venture-backed technology companies into great long-term businesses.</p>
+      <p>Before Octave, I spent eight years as the first employee and a general partner at <a href="https://tiny.com">Tiny</a>.</p>
+    </div>
+  </header>
+
+  <section id="listen" aria-label="Podcast episodes">
+    <span class="overline">Listen</span>
+    <ul class="episodes">
+      <li>
+        <a href="https://colossus.com/episode/giffon-special-situations-in-private-markets/">
+          <div class="show">Invest Like the Best <span class="year">2023</span></div>
+          <div class="title">Special Situations in Private Markets &mdash; with Patrick O&rsquo;Shaughnessy</div>
+        </a>
+      </li>
+      <li>
+        <a href="https://www.mfmpod.com/we-turned-5m-into-419m-buying-cashflow-businesses-ft-jeremy-giffon/">
+          <div class="show">My First Million <span class="year">2024</span></div>
+          <div class="title">We Turned $5M Into $419M Buying Cashflow Businesses</div>
+        </a>
+      </li>
+      <li>
+        <a href="https://www.listennotes.com/podcasts/audience-of-one/004-jeremy-giffon-on-tiny-unv7jUaEZG-/">
+          <div class="show">Audience of One <span class="year">2023</span></div>
+          <div class="title">On Tiny, Philosophy &amp; Overrated Advice</div>
+        </a>
+      </li>
+    </ul>
+  </section>
+
+  <section id="read" class="newsletter" aria-label="Newsletter">
+    <span class="overline">Read</span>
+    <p>I write occasionally. New posts go straight to your inbox.</p>
+    <div class="embed">
+      <iframe src="https://jeremygiffon.substack.com/embed" title="Subscribe to Jeremy Giffon's newsletter" scrolling="no"></iframe>
+    </div>
+  </section>
+
+  <footer>
+    <img class="hallmark" src="assets/hallmark.svg" alt="">
+    <div class="fine">&copy; 2026 Jeremy Giffon &middot; <a href="https://octavecap.com">octavecap.com</a></div>
+  </footer>
+</main>
+</body>
+</html>
