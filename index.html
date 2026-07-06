@@ -53,13 +53,10 @@
     font-weight: 500;
     letter-spacing: 0.014em;
     line-height: 1.45;
-    font-size: 16px;
-  }
-
-  main {
-    max-width: 620px;
-    margin: 0 auto;
-    padding: 88px 24px 64px;
+    font-size: 15px;
+    min-height: 100dvh;
+    display: flex;
+    flex-direction: column;
   }
 
   a {
@@ -77,174 +74,233 @@
 
   .overline {
     font-family: "ABCO Benedict", "Helvetica Neue", Arial, sans-serif;
-    font-size: 0.72rem;
+    font-size: 0.7rem;
     letter-spacing: 0.22em;
     text-transform: uppercase;
     color: var(--muted);
   }
 
-  /* ---- Hero ---- */
-  header img.capital {
+  /* ---- Poster grid ---- */
+  main {
+    flex: 1;
+    display: grid;
+    grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+    align-items: center;
+    gap: clamp(32px, 5vw, 96px);
+    width: 100%;
+    max-width: 1360px;
+    margin: 0 auto;
+    padding: clamp(24px, 3.5vh, 48px) clamp(24px, 4vw, 72px) 16px;
+  }
+
+  /* ---- Left: content ---- */
+  .capital {
     display: block;
-    width: 112px;
+    width: 64px;
     height: auto;
-    margin-bottom: 36px;
+    margin-bottom: 20px;
   }
 
   h1 {
     font-family: "Spezia Serif", Georgia, serif;
     font-weight: 500;
-    font-size: clamp(2.6rem, 8vw, 3.6rem);
+    font-size: clamp(2.3rem, 3.6vw, 3.1rem);
     line-height: 1.05;
     letter-spacing: -0.01em;
-    margin: 14px 0 32px;
+    margin: 8px 0 18px;
   }
 
   .bio p {
-    font-size: 1.04rem;
+    max-width: 34em;
+    font-size: 0.98rem;
     line-height: 1.5;
-    margin-bottom: 1.1em;
-  }
-  .bio p:last-child { margin-bottom: 0; }
-
-  /* ---- Sections ---- */
-  section { margin-top: 72px; }
-
-  section .overline {
-    display: block;
-    padding-bottom: 14px;
-    border-bottom: 1px solid var(--rule);
+    margin-bottom: 0.9em;
   }
 
-  /* ---- Podcasts ---- */
-  .episodes { list-style: none; }
+  .listen { margin-top: 24px; }
+
+  .episodes {
+    list-style: none;
+    margin-top: 6px;
+    border-top: 1px solid var(--rule);
+    max-width: 36em;
+  }
 
   .episodes a {
-    display: block;
-    padding: 22px 0;
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    padding: 10px 0;
     border-bottom: 1px solid var(--rule);
     text-decoration: none;
     color: inherit;
   }
 
   .episodes .show {
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-    gap: 16px;
     font-family: "Spezia Serif", Georgia, serif;
-    font-size: 1.3rem;
-    line-height: 1.2;
+    font-size: 1.05rem;
     color: var(--purple);
+    white-space: nowrap;
     transition: color 120ms ease;
   }
-  .episodes a:hover .show { color: var(--terracotta); }
 
-  .episodes .year {
-    font-family: "ABCO Benedict", "Helvetica Neue", Arial, sans-serif;
-    font-size: 0.7rem;
-    letter-spacing: 0.18em;
+  .episodes .t {
+    font-size: 0.82rem;
     color: var(--muted);
+    flex: 1;
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
     white-space: nowrap;
   }
 
-  .episodes .title {
-    margin-top: 6px;
-    font-size: 0.92rem;
+  .episodes .arrow {
+    font-family: Georgia, serif;
+    font-size: 0.85rem;
     color: var(--muted);
-    line-height: 1.45;
+    transition: color 120ms ease, transform 120ms ease;
   }
 
-  /* ---- Newsletter ---- */
-  .newsletter p {
-    margin: 20px 0 24px;
-    font-size: 1.04rem;
+  .episodes a:hover .show { color: var(--terracotta); }
+  .episodes a:hover .arrow { color: var(--terracotta); transform: translate(2px, -2px); }
+
+  .read { margin-top: 24px; }
+
+  .read p {
+    margin: 8px 0 12px;
+    font-size: 0.98rem;
   }
 
   .embed {
+    max-width: 460px;
     border: 1px solid var(--rule);
     background: var(--white);
-    padding: 8px;
+    padding: 6px;
   }
   .embed iframe {
     display: block;
     width: 100%;
-    height: 320px;
+    height: 235px;
     border: 0;
     background: var(--white);
   }
 
-  /* ---- Footer ---- */
-  footer {
-    margin-top: 88px;
-    padding-top: 40px;
-    border-top: 1px solid var(--rule);
+  /* ---- Right: etching plate ---- */
+  .plate {
+    align-self: center;
     text-align: center;
   }
-  footer img.hallmark {
-    width: 34px;
-    height: auto;
-    margin-bottom: 20px;
+  .plate img.etching {
+    display: block;
+    width: 100%;
+    max-width: 460px;
+    max-height: 78vh;
+    object-fit: contain;
+    margin: 0 auto;
+  }
+  .plate .caption {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 22px;
+  }
+  .plate .caption img { width: 22px; height: auto; opacity: 0.9; }
+
+  /* ---- Footer ---- */
+  footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 16px;
+    width: 100%;
+    max-width: 1360px;
+    margin: 0 auto;
+    padding: 10px clamp(24px, 4vw, 72px) 20px;
   }
   footer .fine {
     font-family: "ABCO Benedict", "Helvetica Neue", Arial, sans-serif;
-    font-size: 0.7rem;
+    font-size: 0.68rem;
     letter-spacing: 0.18em;
     text-transform: uppercase;
     color: var(--muted);
   }
   footer .fine a { color: inherit; text-decoration-color: var(--rule); }
   footer .fine a:hover { color: var(--terracotta); }
+
+  /* ---- Narrow screens ---- */
+  @media (max-width: 900px) {
+    body { font-size: 16px; }
+    main {
+      grid-template-columns: 1fr;
+      align-items: start;
+      padding-top: 56px;
+    }
+    .plate { order: 2; padding: 8px 0 24px; }
+    .plate img.etching { max-width: min(420px, 82vw); max-height: none; }
+    .episodes .t { display: none; }
+    .episodes .show { white-space: normal; flex: 1; }
+    footer { flex-direction: column; gap: 6px; align-items: center; text-align: center; }
+  }
 </style>
 </head>
 <body>
 <main>
-  <header>
-    <img class="capital" src="assets/illuminated-j.png" alt="Illuminated capital J">
-    <span class="overline">New York City</span>
-    <h1>Jeremy Giffon</h1>
-    <div class="bio">
-      <p>I&rsquo;m the founder of <a href="https://octavecap.com">Octave</a>. We buy and build venture-backed technology companies into great long-term businesses.</p>
-      <p>Before Octave, I spent eight years as the first employee and a general partner at <a href="https://tiny.com">Tiny</a>.</p>
+  <div class="content">
+    <header>
+      <img class="capital" src="assets/illuminated-j.png" alt="Illuminated capital J">
+      <span class="overline">New York City</span>
+      <h1>Jeremy Giffon</h1>
+      <div class="bio">
+        <p>I&rsquo;m the founder of <a href="https://octavecap.com">Octave</a>. We buy and build venture-backed technology companies into great long-term businesses.</p>
+        <p>Before Octave, I spent eight years as the first employee and a general partner at <a href="https://tiny.com">Tiny</a>.</p>
+      </div>
+    </header>
+
+    <nav class="listen" aria-label="Podcast episodes">
+      <span class="overline">Listen</span>
+      <ul class="episodes">
+        <li>
+          <a href="https://colossus.com/episode/giffon-special-situations-in-private-markets/">
+            <span class="show">Invest Like the Best</span>
+            <span class="t">Special Situations in Private Markets</span>
+            <span class="arrow">&#8599;</span>
+          </a>
+        </li>
+        <li>
+          <a href="https://www.mfmpod.com/we-turned-5m-into-419m-buying-cashflow-businesses-ft-jeremy-giffon/">
+            <span class="show">My First Million</span>
+            <span class="t">We Turned $5M Into $419M Buying Cashflow Businesses</span>
+            <span class="arrow">&#8599;</span>
+          </a>
+        </li>
+        <li>
+          <a href="https://www.listennotes.com/podcasts/audience-of-one/004-jeremy-giffon-on-tiny-unv7jUaEZG-/">
+            <span class="show">Audience of One</span>
+            <span class="t">On Tiny, Philosophy &amp; Overrated Advice</span>
+            <span class="arrow">&#8599;</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+
+    <div class="read" aria-label="Newsletter">
+      <span class="overline">Read</span>
+      <p>I write occasionally. New posts go straight to your inbox.</p>
+      <div class="embed">
+        <iframe src="https://jeremygiffon.substack.com/embed" title="Subscribe to Jeremy Giffon's newsletter" scrolling="no"></iframe>
+      </div>
     </div>
-  </header>
+  </div>
 
-  <section id="listen" aria-label="Podcast episodes">
-    <span class="overline">Listen</span>
-    <ul class="episodes">
-      <li>
-        <a href="https://colossus.com/episode/giffon-special-situations-in-private-markets/">
-          <div class="show">Invest Like the Best <span class="year">2023</span></div>
-          <div class="title">Special Situations in Private Markets &mdash; with Patrick O&rsquo;Shaughnessy</div>
-        </a>
-      </li>
-      <li>
-        <a href="https://www.mfmpod.com/we-turned-5m-into-419m-buying-cashflow-businesses-ft-jeremy-giffon/">
-          <div class="show">My First Million <span class="year">2024</span></div>
-          <div class="title">We Turned $5M Into $419M Buying Cashflow Businesses</div>
-        </a>
-      </li>
-      <li>
-        <a href="https://www.listennotes.com/podcasts/audience-of-one/004-jeremy-giffon-on-tiny-unv7jUaEZG-/">
-          <div class="show">Audience of One <span class="year">2023</span></div>
-          <div class="title">On Tiny, Philosophy &amp; Overrated Advice</div>
-        </a>
-      </li>
-    </ul>
-  </section>
-
-  <section id="read" class="newsletter" aria-label="Newsletter">
-    <span class="overline">Read</span>
-    <p>I write occasionally. New posts go straight to your inbox.</p>
-    <div class="embed">
-      <iframe src="https://jeremygiffon.substack.com/embed" title="Subscribe to Jeremy Giffon's newsletter" scrolling="no"></iframe>
-    </div>
-  </section>
-
-  <footer>
-    <img class="hallmark" src="assets/hallmark.svg" alt="">
-    <div class="fine">&copy; 2026 Jeremy Giffon &middot; <a href="https://octavecap.com">octavecap.com</a></div>
-  </footer>
+  <aside class="plate" aria-hidden="true">
+    <img class="etching" src="assets/etching-garden.png" alt="">
+    <span class="caption"><img src="assets/hallmark.svg" alt=""></span>
+  </aside>
 </main>
+
+<footer>
+  <span class="fine">&copy; 2026 Jeremy Giffon &middot; New York</span>
+  <span class="fine"><a href="https://octavecap.com">octavecap.com</a></span>
+</footer>
 </body>
 </html>
