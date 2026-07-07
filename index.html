@@ -92,15 +92,32 @@
     font-size: clamp(2.3rem, 3.6vw, 3.1rem);
     line-height: 1.05;
     letter-spacing: -0.01em;
-    margin: 0 0 18px;
+    margin: 0;
   }
 
-  .bio p {
-    max-width: 34em;
-    font-size: 0.98rem;
-    line-height: 1.5;
-    margin-bottom: 0.9em;
+  .points {
+    list-style: none;
+    margin-top: 26px;
+    max-width: 30em;
   }
+
+  .points li {
+    position: relative;
+    font-family: "Spezia Serif", Georgia, serif;
+    font-size: 1.2rem;
+    line-height: 1.45;
+    padding-left: 26px;
+    margin-top: 14px;
+  }
+
+  .points li::before {
+    content: "\00B7";
+    position: absolute;
+    left: 4px;
+    color: var(--terracotta);
+  }
+
+  .points a { text-decoration-color: rgba(59, 5, 88, 0.28); }
 
   /* Show only the input + button row of the Substack embed:
      the form row sits at the vertical center of the iframe, so a
@@ -111,7 +128,7 @@
     max-width: 440px;
     height: 60px;
     overflow: hidden;
-    margin-top: 28px;
+    margin-top: 30px;
   }
   .embed iframe {
     position: absolute;
@@ -155,10 +172,14 @@
   <div class="content">
     <header>
       <h1>Jeremy Giffon</h1>
-      <div class="bio">
-        <p>I invest in unconventional technology companies through my <a href="https://octavecap.com">fund</a>, and write on <a href="https://x.com/jeremygiffon">X</a> and <a href="https://jeremygiffon.substack.com">Substack</a>. Should you care to learn more I&rsquo;ve done some interviews on podcasts like <a href="https://colossus.com/episode/giffon-special-situations-in-private-markets/">Invest Like The Best</a> and <a href="https://share.snipd.com/person/jeremy-giffon/hQgumP6WRvyAX_NOfmWx5A">others</a>, or you can see my resume on <a href="https://www.linkedin.com/in/jeremygiffon/">LinkedIn</a>.</p>
-      </div>
     </header>
+
+    <ul class="points">
+      <li>I invest in unconventional technology companies through my <a href="https://octavecap.com">fund</a></li>
+      <li>I write on <a href="https://x.com/jeremygiffon">X</a> and <a href="https://jeremygiffon.substack.com">Substack</a></li>
+      <li>I&rsquo;ve done interviews on <a href="https://colossus.com/episode/giffon-special-situations-in-private-markets/">Invest Like The Best</a>, <a href="https://www.mfmpod.com/we-turned-5m-into-419m-buying-cashflow-businesses-ft-jeremy-giffon/">My First Million</a>, and <a href="https://share.snipd.com/person/jeremy-giffon/hQgumP6WRvyAX_NOfmWx5A">more</a></li>
+      <li>My resume is on <a href="https://www.linkedin.com/in/jeremygiffon/">LinkedIn</a></li>
+    </ul>
 
     <div class="embed" aria-label="Subscribe to my Substack">
       <iframe src="https://jeremygiffon.substack.com/embed" title="Subscribe to Jeremy Giffon's newsletter" scrolling="no"></iframe>
