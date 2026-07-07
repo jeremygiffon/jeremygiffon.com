@@ -187,13 +187,19 @@
     main {
       grid-template-columns: 1fr;
       align-items: start;
-      padding-top: 56px;
+      align-content: center;
+      gap: 0;
+      min-height: 100dvh;
+      padding-top: 16px;
+      padding-bottom: 16px;
     }
-    .plate { order: -1; padding: 0 0 8px; }
-    .plate img.etching { max-width: min(420px, 82vw); max-height: none; }
+    /* scale the etching to the viewport height so the whole page fits one screen */
+    .plate { order: -1; padding: 0; }
+    .plate img.etching { width: min(64vw, calc(34dvh * 1210 / 1600)); }
     .content { text-align: center; }
-    .bio { margin-left: auto; margin-right: auto; }
-    .embed { margin-left: auto; margin-right: auto; }
+    h1 { margin-top: 6px; }
+    .bio { margin: 14px auto 0; text-align: left; }
+    .embed { margin: 18px auto 0; }
   }
 </style>
 </head>
