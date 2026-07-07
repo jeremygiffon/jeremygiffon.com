@@ -99,7 +99,7 @@
     font-size: clamp(2.3rem, 3.6vw, 3.1rem);
     line-height: 1.05;
     letter-spacing: -0.01em;
-    margin: 8px 0 18px;
+    margin: 0 0 18px;
   }
 
   .bio p {
@@ -172,8 +172,6 @@
     max-width: 440px;
     height: 60px;
     overflow: hidden;
-    border: 1px solid var(--rule);
-    background: var(--white);
   }
   .embed iframe {
     position: absolute;
@@ -183,7 +181,6 @@
     width: calc(100% + 24px);
     height: 320px;
     border: 0;
-    background: var(--white);
   }
 
   /* ---- Right: etching plate ---- */
@@ -193,33 +190,13 @@
   }
   .plate img.etching {
     display: block;
-    width: min(100%, 460px, calc(80vh * 832 / 1100));
+    width: min(100%, calc(92vh * 1210 / 1600));
     height: auto;
+    aspect-ratio: 1210 / 1600;
     margin: 0 auto;
     /* crop off the white plate mat baked into the PNG */
     clip-path: polygon(22.08% 3.09%, 77.92% 3.09%, 95.91% 16.22%, 95.91% 83.78%, 77.92% 96.91%, 22.08% 96.91%, 4.09% 83.78%, 4.09% 16.22%);
   }
-  /* ---- Footer ---- */
-  footer {
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-    gap: 16px;
-    width: 100%;
-    max-width: 1360px;
-    margin: 0 auto;
-    padding: 10px clamp(24px, 4vw, 72px) 20px;
-  }
-  footer .fine {
-    font-family: "ABCO Benedict", "Helvetica Neue", Arial, sans-serif;
-    font-size: 0.68rem;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: var(--muted);
-  }
-  footer .fine a { color: inherit; text-decoration-color: var(--rule); }
-  footer .fine a:hover { color: var(--terracotta); }
-
   /* ---- Narrow screens ---- */
   @media (max-width: 900px) {
     body { font-size: 16px; }
@@ -232,7 +209,6 @@
     .plate img.etching { max-width: min(420px, 82vw); max-height: none; }
     .episodes .t { display: none; }
     .episodes .show { white-space: normal; flex: 1; }
-    footer { flex-direction: column; gap: 6px; align-items: center; text-align: center; }
   }
 </style>
 </head>
@@ -240,7 +216,6 @@
 <main>
   <div class="content">
     <header>
-      <span class="overline">New York City</span>
       <h1>Jeremy Giffon</h1>
       <div class="bio">
         <p>I&rsquo;m the founder of <a href="https://octavecap.com">Octave</a>. We buy and build venture-backed technology companies into great long-term businesses.</p>
@@ -285,13 +260,20 @@
   </div>
 
   <aside class="plate" aria-hidden="true">
-    <img class="etching" src="assets/etching-garden.png" alt="">
+    <img class="etching" id="etching" alt="">
+    <noscript><img class="etching" src="assets/etching-garden-1.png" alt=""></noscript>
   </aside>
 </main>
-
-<footer>
-  <span class="fine">&copy; 2026 Jeremy Giffon &middot; New York</span>
-  <span class="fine"><a href="https://octavecap.com">octavecap.com</a></span>
-</footer>
+<script>
+  (function () {
+    var etchings = ["cathedral-1", "cathedral-2", "cathedral-3", "garden-1", "garden-2", "garden-3"];
+    var last = null;
+    try { last = localStorage.getItem("etching"); } catch (e) {}
+    var pool = etchings.filter(function (e) { return e !== last; });
+    var pick = pool[Math.floor(Math.random() * pool.length)];
+    try { localStorage.setItem("etching", pick); } catch (e) {}
+    document.getElementById("etching").src = "assets/etching-" + pick + ".png";
+  })();
+</script>
 </body>
 </html>
