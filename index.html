@@ -62,7 +62,7 @@
   }
 
   :root {
-    --h1size: clamp(2.3rem, 3.6vw, 3.1rem);
+    --h1size: clamp(2.7rem, 3.6vw, 3.1rem);
     --paper: #F4F3EF;
     --white: #F9F9F9;
     --ink: #121212;
@@ -130,7 +130,7 @@
        tracking 14 (0.014em), leading 140% */
     font-family: "Spezia Wide", "Helvetica Neue", Arial, sans-serif;
     font-weight: 500;
-    font-size: 0.92rem;
+    font-size: 1rem;
     letter-spacing: 0.014em;
     line-height: 1.4;
     margin-top: 16px;
@@ -261,7 +261,11 @@
       var avail = window.innerHeight
         - parseFloat(ms.paddingTop) - parseFloat(ms.paddingBottom)
         - content.offsetHeight - 6;
-      img.style.height = Math.max(140, avail) + "px";
+      // also cap by width so the element box keeps the image's exact
+      // aspect ratio -- otherwise the octagon clip-path drifts off the
+      // artwork and exposes the plate border baked into the PNG
+      var widthCap = (0.86 * window.innerWidth) * 1600 / 1210;
+      img.style.height = Math.max(140, Math.min(avail, widthCap)) + "px";
     }
     fit();
     window.addEventListener("resize", fit);
