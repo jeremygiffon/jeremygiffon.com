@@ -103,17 +103,21 @@
 
   .points li {
     position: relative;
-    font-family: "Spezia Serif", Georgia, serif;
-    font-size: 1.2rem;
-    line-height: 1.45;
-    padding-left: 26px;
-    margin-top: 14px;
+    /* Body Copy per brand guidelines: Spezia Wide Medium,
+       tracking 14 (0.014em), leading 140% */
+    font-family: "Spezia Wide", "Helvetica Neue", Arial, sans-serif;
+    font-weight: 500;
+    font-size: 0.92rem;
+    letter-spacing: 0.014em;
+    line-height: 1.4;
+    padding-left: 22px;
+    margin-top: 12px;
   }
 
   .points li::before {
     content: "\00B7";
     position: absolute;
-    left: 4px;
+    left: 2px;
     color: var(--terracotta);
   }
 
