@@ -105,10 +105,14 @@
     letter-spacing: 0.014em;
     line-height: 1.4;
     margin-top: 24px;
-    max-width: 30em;
+    max-width: 26em;
+    text-wrap: pretty;
   }
 
-  .bio a { text-decoration-color: rgba(59, 5, 88, 0.28); }
+  .bio a {
+    text-decoration-color: rgba(59, 5, 88, 0.28);
+    white-space: nowrap;
+  }
 
   /* Show only the input + button row of the Substack embed:
      the form row sits at the vertical center of the iframe, so a
