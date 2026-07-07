@@ -133,7 +133,7 @@
     font-size: 0.92rem;
     letter-spacing: 0.014em;
     line-height: 1.4;
-    margin-top: 24px;
+    margin-top: 16px;
     max-width: 26em;
     text-wrap: pretty;
   }
@@ -153,7 +153,7 @@
     max-width: 100%;
     height: 60px;
     overflow: hidden;
-    margin-top: 24px;
+    margin-top: 18px;
   }
   /* Substack centers a ~360px form inside the iframe; size the iframe
      wider and pull it left/up so only the form row shows, flush left. */
@@ -183,23 +183,36 @@
   }
   /* ---- Narrow screens ---- */
   @media (max-width: 900px) {
-    body { font-size: 16px; }
+    body { font-size: 16px; height: 100dvh; }
     main {
       grid-template-columns: 1fr;
-      align-items: start;
-      align-content: center;
+      /* etching gets all the height left over after the content */
+      grid-template-rows: minmax(0, 1fr) auto;
+      align-items: stretch;
+      align-content: stretch;
       gap: 0;
-      min-height: 100dvh;
-      padding-top: 16px;
+      height: 100dvh;
+      min-height: 0;
+      padding-top: 12px;
       padding-bottom: 16px;
     }
-    /* scale the etching to the viewport height so the whole page fits one screen */
-    .plate { order: -1; padding: 0; }
-    .plate img.etching { width: min(64vw, calc(34dvh * 1210 / 1600)); }
+    .plate {
+      order: -1;
+      padding: 0 0 6px;
+      min-height: 0;
+    }
+    /* height is set precisely by the fit() script below */
+    .plate img.etching {
+      height: 40dvh;
+      width: auto;
+      max-width: 86vw;
+      margin: 0 auto;
+      object-fit: contain;
+    }
     .content { text-align: center; }
     h1 { margin-top: 6px; }
-    .bio { margin: 14px auto 0; text-align: left; }
-    .embed { margin: 18px auto 0; }
+    .bio { margin: 12px auto 0; text-align: left; }
+    .embed { margin: 14px auto 0; }
   }
 </style>
 </head>
@@ -232,7 +245,27 @@
     var pool = etchings.filter(function (e) { return e !== last; });
     var pick = pool[Math.floor(Math.random() * pool.length)];
     try { localStorage.setItem("etching", pick); } catch (e) {}
-    document.getElementById("etching").src = "assets/etching-" + pick + ".png";
+    var img = document.getElementById("etching");
+    img.src = "assets/etching-" + pick + ".png";
+
+    // On mobile, give the etching every pixel left over after the content,
+    // so the page fills one screen exactly with no scrolling.
+    var main = document.querySelector("main");
+    var content = document.querySelector(".content");
+    function fit() {
+      if (!window.matchMedia("(max-width: 900px)").matches) {
+        img.style.height = "";
+        return;
+      }
+      var ms = getComputedStyle(main);
+      var avail = window.innerHeight
+        - parseFloat(ms.paddingTop) - parseFloat(ms.paddingBottom)
+        - content.offsetHeight - 6;
+      img.style.height = Math.max(140, avail) + "px";
+    }
+    fit();
+    window.addEventListener("resize", fit);
+    window.addEventListener("load", fit);
   })();
 </script>
 </body>
